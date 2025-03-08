@@ -9,11 +9,11 @@ estacionamento-app/node_modules/
 estacionamento-app/modules/ssr-benchmarks/node_modules/
 
 # IDE - VSCode
-estacionamento-app/.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+*.vscode/*
+*!.vscode/settings.json
+*!.vscode/tasks.json
+*!.vscode/launch.json
+*!.vscode/extensions.json
 .history/*
 
 # Include when developing application packages.
