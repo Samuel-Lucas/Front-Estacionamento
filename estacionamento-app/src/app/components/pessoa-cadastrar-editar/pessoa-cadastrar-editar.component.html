@@ -1,0 +1,52 @@
+<mat-toolbar>Cadastrar no site</mat-toolbar>
+
+<div class="componente-container">
+  <form class="form-padrao" *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && salvar()"
+        novalidate>
+        <mat-form-field>
+            <input matInput placeholder="Nome" formControlName="nome" required autocomplete="off">
+            <mat-error>Nome é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Sobrenome" formControlName="sobreNome" required autocomplete="off">
+            <mat-error>Sobrenome é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="exemplo@hotmail.com" formControlName="email" required autocomplete="off">
+            <mat-error>Email é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="{{ hide.value ? 'password' : 'text' }}" placeholder="Senha" formControlName="senha" required autocomplete="off">
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="togglePasswordButton()"
+              [attr.aria-label]="'Hide password'"
+            >
+              <mat-icon>{{ hide.value ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error>Senha é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="{{ hide.value ? 'password' : 'text' }}" placeholder="Confirmar senha" formControlName="confirmarSenha" required autocomplete="off">
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="togglePasswordButton()"
+              [attr.aria-label]="'Hide password'"
+            >
+              <mat-icon>{{ hide.value ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error>Confirme a senha</mat-error>
+            <mat-error *ngIf="formGroup.hasError('senhasNaoCorrespondem')">As senhas não coincidem</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Telefone" formControlName="telefone" required autocomplete="off">
+            <mat-error>Telefone é obrigatório</mat-error>
+        </mat-form-field>
+        <div class="linha-botoes">
+            <button mat-raised-button color="primary" [disabled]="!formGroup.valid">Salvar</button>
+            <button type="button" mat-raised-button routerLink="">Cancelar</button>
+        </div>
+    </form>
+</div>

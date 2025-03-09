@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pessoa } from '../models/pessoa.model';
+import { PessoaInsertRequest } from '../models/pessoa-insert-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,9 @@ export class PessoaService {
 
   listarPessoas(): Observable<Pessoa[]> {
     return this.httpClient.get<Pessoa[]>(`${this.baseUrl}/${this.endpoint}`)
+  }
+
+  cadastrarPessoa(pessoa: PessoaInsertRequest): Observable<PessoaInsertRequest> {
+    return this.httpClient.post<PessoaInsertRequest>(`${this.baseUrl}/${this.endpoint}`, pessoa)
   }
 }
