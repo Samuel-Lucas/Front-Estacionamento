@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PessoaListarRoutingModule } from './pessoa-listar-routing.module';
-import { PessoaListarComponent } from './PessoaListar/PessoaListar.component';
+import { PessoaListarComponent } from '../../components/pessoa-listar/pessoa-listar.component';
 
 import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
