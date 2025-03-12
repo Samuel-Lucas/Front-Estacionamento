@@ -16,26 +16,26 @@
             <mat-error>Email é obrigatório</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input matInput type="{{ hide.value ? 'password' : 'text' }}" placeholder="Senha" formControlName="senha" required autocomplete="off">
+            <input matInput type="{{ !senhaVisivel ? 'password' : 'text' }}" placeholder="Senha" formControlName="senha" required autocomplete="off">
             <button
               mat-icon-button
               matSuffix
-              (click)="togglePasswordButton()"
+              (click)="toggleVisibility('senha')"
               [attr.aria-label]="'Hide password'"
             >
-              <mat-icon>{{ hide.value ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-icon>{{ !senhaVisivel ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
             <mat-error>Senha é obrigatório</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input matInput type="{{ hide.value ? 'password' : 'text' }}" placeholder="Confirmar senha" formControlName="confirmarSenha" required autocomplete="off">
+            <input matInput type="{{ !confirmarSenhaVisivel ? 'password' : 'text' }}" placeholder="Confirmar senha" formControlName="confirmarSenha" required autocomplete="off">
             <button
               mat-icon-button
               matSuffix
-              (click)="togglePasswordButton()"
+              (click)="toggleVisibility('confirmarSenha')"
               [attr.aria-label]="'Hide password'"
             >
-              <mat-icon>{{ hide.value ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-icon>{{ !confirmarSenhaVisivel ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
             <mat-error>Confirme a senha</mat-error>
             <mat-error *ngIf="formGroup.hasError('senhasNaoCorrespondem')">As senhas não coincidem</mat-error>
