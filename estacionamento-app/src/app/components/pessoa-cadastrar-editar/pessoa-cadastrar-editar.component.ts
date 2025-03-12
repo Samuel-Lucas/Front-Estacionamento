@@ -13,7 +13,8 @@ import { PessoaService } from 'src/app/services/pessoa.services.service';
 export class PessoaCadastrarEditarComponent implements OnInit {
 
   formGroup!: FormGroup
-  hide = new BehaviorSubject<boolean>(true)
+  senhaVisivel = false
+  confirmarSenhaVisivel = false
 
   constructor(
     private formBuilder: FormBuilder,
@@ -51,13 +52,17 @@ export class PessoaCadastrarEditarComponent implements OnInit {
     )
   }
 
-  togglePasswordButton() {
-    this.hide.next(!this.hide.value)
+  toggleVisibility(input: 'senha' | 'confirmarSenha'): void {
+    if (input === 'senha') {
+      this.senhaVisivel = !this.senhaVisivel
+    } else if (input === 'confirmarSenha') {
+      this.confirmarSenhaVisivel = !this.confirmarSenhaVisivel
+    }
   }
 
-  senhasIguaisValidator(group: FormGroup) {
-    const senha = group.get('senha')?.value;
-    const confirmarSenha = group.get('confirmarSenha')?.value;
-    return senha === confirmarSenha ? null : { senhasNaoCorrespondem: true };
+  senhasIguaisValidator(formGroup: FormGroup) {
+    const senha = formGroup.get('senha')?.value;
+    const confirmarSenha = formGroup.get('confirmarSenha')?.value;
+    return senha === confirmarSenha ? null : { senhasNaoCorrespondem: true }
   }
 }
