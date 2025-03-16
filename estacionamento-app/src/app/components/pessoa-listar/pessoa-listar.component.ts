@@ -11,7 +11,7 @@ import { PessoaService } from 'src/app/services/pessoa.services.service';
 export class PessoaListarComponent implements OnInit {
 
   pessoas: Observable<Pessoa[]> = new Observable<Pessoa[]>();
-  colunasTabela = ['Nome', 'Sobrenome', 'Email', 'Telefone']
+  colunasTabela = ['Nome', 'Sobrenome', 'Email', 'Telefone', 'Acoes']
 
   constructor(private pessoaService: PessoaService) { }
 
