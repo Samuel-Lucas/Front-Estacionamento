@@ -18,7 +18,15 @@ export class PessoaService {
     return this.httpClient.get<Pessoa[]>(`${this.baseUrl}/${this.endpoint}`)
   }
 
+  obterPessoa(idPessoa: string): Observable<Pessoa> {
+    return this.httpClient.get<Pessoa>(`${this.baseUrl}/${this.endpoint}/${idPessoa}`)
+  }
+
   cadastrarPessoa(pessoa: PessoaInsertRequest): Observable<PessoaInsertRequest> {
     return this.httpClient.post<PessoaInsertRequest>(`${this.baseUrl}/${this.endpoint}`, pessoa)
+  }
+
+  atualizarPessoa(pessoa: Pessoa): Observable<Pessoa> {
+    return this.httpClient.put<Pessoa>(`${this.baseUrl}/${this.endpoint}`, pessoa)
   }
 }

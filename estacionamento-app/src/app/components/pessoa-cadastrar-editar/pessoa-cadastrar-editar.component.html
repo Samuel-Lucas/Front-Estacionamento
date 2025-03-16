@@ -1,8 +1,12 @@
-<mat-toolbar>Cadastrar no site</mat-toolbar>
+<mat-toolbar>{{(pessoa && pessoa.idPessoa ? 'Editar seus dados' : 'Cadastrar no site')}}</mat-toolbar>
 
 <div class="componente-container">
   <form class="form-padrao" *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && salvar()"
         novalidate>
+        <mat-form-field *ngIf="formGroup.get('idPessoa')?.value" >
+          <input matInput type="hidden" placeholder="IdPessoa" formControlName="idPessoa" value="{{pessoa.idPessoa}}" [attr.hidden]="true" [attr.disabled]="true" required autocomplete="off">
+          <mat-error>IdPessoa é obrigatório</mat-error>
+        </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Nome" formControlName="nome" required autocomplete="off">
             <mat-error>Nome é obrigatório</mat-error>
@@ -15,7 +19,7 @@
             <input matInput placeholder="exemplo@hotmail.com" formControlName="email" required autocomplete="off">
             <mat-error>Email é obrigatório</mat-error>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field *ngIf="!formGroup.get('idPessoa')?.value">
             <input matInput type="{{ !senhaVisivel ? 'password' : 'text' }}" placeholder="Senha" formControlName="senha" required autocomplete="off">
             <button
               mat-icon-button
@@ -27,7 +31,7 @@
             </button>
             <mat-error>Senha é obrigatório</mat-error>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field *ngIf="!formGroup.get('idPessoa')?.value">
             <input matInput type="{{ !confirmarSenhaVisivel ? 'password' : 'text' }}" placeholder="Confirmar senha" formControlName="confirmarSenha" required autocomplete="off">
             <button
               mat-icon-button
