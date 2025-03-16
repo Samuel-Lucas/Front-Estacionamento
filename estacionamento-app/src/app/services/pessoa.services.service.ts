@@ -29,4 +29,8 @@ export class PessoaService {
   atualizarPessoa(pessoa: Pessoa): Observable<Pessoa> {
     return this.httpClient.put<Pessoa>(`${this.baseUrl}/${this.endpoint}`, pessoa)
   }
+
+  deletarPessoa(idPessoa: string): Observable<Pessoa> {
+    return this.httpClient.delete<Pessoa>(`${this.baseUrl}/${this.endpoint}/${idPessoa}`)
+  }
 }

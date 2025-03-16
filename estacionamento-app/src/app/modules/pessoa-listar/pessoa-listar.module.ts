@@ -7,6 +7,7 @@ import { PessoaListarComponent } from '../../components/pessoa-listar/pessoa-lis
 import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     PessoaListarRoutingModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatButtonModule
   ]
 })
 export class PessoaListarModule { }
