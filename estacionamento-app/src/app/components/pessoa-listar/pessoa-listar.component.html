@@ -27,9 +27,12 @@
       <ng-container matColumnDef="Acoes">
         <th mat-header-cell *matHeaderCellDef> Ações </th>
         <td mat-cell *matCellDef="let pessoa">
-          <a routerLink="editar/{{pessoa.idPessoa}}">
+          <button mat-raised-button class="mat-success" type="button" routerLink="editar/{{pessoa.idPessoa}}">
             Editar
-          </a>
+          </button>
+          <button mat-raised-button color="warn" type="button" (click)="deletarPessoa(pessoa.idPessoa)">
+            Excluir
+          </button>
         </td>
       </ng-container>
 
