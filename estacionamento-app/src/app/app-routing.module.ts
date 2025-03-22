@@ -10,6 +10,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/pessoa-listar/pessoa-listar.module').then(modulo => modulo.PessoaListarModule)
   },
   {
+    path: "veiculos",
+    loadChildren: () => import('./modules/veiculo-listar/veiculo-listar.module').then(modulo => modulo.VeiculoListarModule)
+  },
+  {
     path: "pessoas/cadastrar",
     loadChildren: () => import('./modules/pessoa-cadastrar-editar/pessoa-cadastrar-editar.module').then(modulo => modulo.PessoaCadastrarEditarModule)
   },

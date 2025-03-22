@@ -1,0 +1,9 @@
+table {
+  width: 100%;
+}
+
+.mat-success {
+  background-color: green;
+  color: #fff;
+  margin-right: 5px;
+}
