@@ -1,0 +1,35 @@
+<mat-toolbar>{{(veiculo && veiculo.idVeiculo ? 'Editar veículo' : 'Cadastrar veículo')}}</mat-toolbar>
+
+<div class="componente-container">
+  <form class="form-padrao" *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && salvarVeiculo()"
+        novalidate>
+        <mat-form-field *ngIf="formGroup.get('idVeiculo')?.value" >
+          <input matInput type="hidden" placeholder="IdVeiculo" formControlName="idVeiculo" value="{{veiculo.idVeiculo}}" [attr.hidden]="true" [attr.disabled]="true" required autocomplete="off">
+          <mat-error>IdVeiculo é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="!formGroup.get('idVeiculo')?.value">
+          <input matInput placeholder="IdPessoa" formControlName="idPessoa" required autocomplete="off">
+          <mat-error>IdPessoa é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Marca" formControlName="marca" required autocomplete="off">
+            <mat-error>Marca é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Modelo" formControlName="modelo" required autocomplete="off">
+            <mat-error>Modelo é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Cor" formControlName="cor" required autocomplete="off">
+            <mat-error>Cor é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Placa" formControlName="placa" required autocomplete="off">
+            <mat-error>Placa é obrigatório</mat-error>
+        </mat-form-field>
+        <div class="linha-botoes">
+            <button mat-raised-button color="primary" [disabled]="!formGroup.valid">Salvar</button>
+            <button type="button" mat-raised-button routerLink="">Cancelar</button>
+        </div>
+    </form>
+</div>
