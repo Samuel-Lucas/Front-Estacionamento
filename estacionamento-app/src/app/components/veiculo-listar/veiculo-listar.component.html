@@ -1,5 +1,9 @@
 <mat-toolbar>Veículos cadastrados</mat-toolbar>
 
+<div class="linha-botoes">
+  <button mat-raised-button color="primary" routerLink="cadastrar">Cadastrar veículo</button>
+</div>
+
 <div class="componente-container">
   <div *ngIf="veiculos | async as veiculos; else carregando">
     <table mat-table [dataSource]="veiculos" class="mat-elevation-z8">
@@ -32,7 +36,7 @@
       <ng-container matColumnDef="Acoes">
         <th mat-header-cell *matHeaderCellDef> Ações </th>
         <td mat-cell *matCellDef="let veiculo">
-          <button mat-raised-button class="mat-success" type="button">
+          <button mat-raised-button class="mat-success" type="button" routerLink="editar/{{veiculo.idVeiculo}}">
             Editar
           </button>
           <button mat-raised-button color="warn" type="button">
