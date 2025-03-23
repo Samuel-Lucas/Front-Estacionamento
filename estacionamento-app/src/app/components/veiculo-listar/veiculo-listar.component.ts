@@ -14,10 +14,7 @@ export class VeiculoListarComponent implements OnInit {
   veiculos: Observable<Veiculo[]> = new Observable<Veiculo[]>();
   colunasTabela = ['Marca', 'Modelo', 'Cor', 'Placa', 'Dono', 'Acoes']
 
-  constructor(
-    private veiculoService: VeiculoService,
-    private router: Router
-  ) { }
+  constructor(private veiculoService: VeiculoService) { }
 
   ngOnInit() {
     this.listarTodosVeiculos();
@@ -25,5 +22,18 @@ export class VeiculoListarComponent implements OnInit {
 
   listarTodosVeiculos() {
     this.veiculos = this.veiculoService.listarVeiculos()
+  }
+
+  deletarVeiculo(idVeiculo: number) {
+    if (confirm("Deseja remover seu veículo ?")) {
+      this.veiculoService.removerVeiculo(idVeiculo).subscribe(
+        response => {
+          window.location.reload()
+        },
+        error => {
+          alert("Erro ao excluir veículo " + JSON.stringify(error))
+        }
+      )
+    }
   }
 }

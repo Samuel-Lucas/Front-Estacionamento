@@ -39,7 +39,7 @@
           <button mat-raised-button class="mat-success" type="button" routerLink="editar/{{veiculo.idVeiculo}}">
             Editar
           </button>
-          <button mat-raised-button color="warn" type="button">
+          <button mat-raised-button color="warn" type="button" (click)="deletarVeiculo(veiculo.idVeiculo)">
             Excluir
           </button>
         </td>
