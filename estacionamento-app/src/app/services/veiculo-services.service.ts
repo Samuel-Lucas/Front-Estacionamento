@@ -29,4 +29,8 @@ export class VeiculoService {
   atualizarVeiculo(veiculo: VeiculoInsertRequest): Observable<VeiculoInsertRequest> {
     return this.httpClient.put<VeiculoInsertRequest>(`${this.baseUrl}/${this.endpoint}`, veiculo)
   }
+
+  removerVeiculo(idVeiculo: number): Observable<Veiculo> {
+    return this.httpClient.delete<Veiculo>(`${this.baseUrl}/${this.endpoint}/${idVeiculo}`)
+  }
 }

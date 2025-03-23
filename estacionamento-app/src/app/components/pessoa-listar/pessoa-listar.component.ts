@@ -34,7 +34,7 @@ export class PessoaListarComponent implements OnInit {
           this.router.navigateByUrl("")
         },
         error => {
-          alert("Erro ao excluir conta" + JSON.stringify(error))
+          alert("Erro ao excluir conta " + JSON.stringify(error))
         }
       )
     }
