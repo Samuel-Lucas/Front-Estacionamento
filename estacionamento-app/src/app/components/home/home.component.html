@@ -29,12 +29,15 @@
             <mat-error>Senha é obrigatório</mat-error>
           </mat-form-field>
         </div>
-        <button mat-flat-button color="primary" [disabled]="!loginForm.valid">Login</button>
+        <div>
+          <button mat-flat-button color="primary" style="margin-bottom: 5px;" [disabled]="!loginForm.valid">Login</button>
+        </div>
+        <hr>
+        <div>
+          <p>Não tem cadastro ?</p>
+          <button mat-raised-button color="primary" routerLink="pessoas/cadastrar">Cadastrar</button>
+        </div>
       </form>
     </mat-card-content>
   </mat-card>
-</div>
-
-<div class="linha-botoes">
-  <button mat-raised-button color="primary" routerLink="pessoas/cadastrar">Cadastrar</button>
 </div>
