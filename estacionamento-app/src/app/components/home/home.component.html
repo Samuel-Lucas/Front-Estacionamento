@@ -6,7 +6,7 @@
       <div class="header">
         <h2>LOGIN</h2>
       </div>
-      <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="loginForm.valid">
+      <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && signin()">
         <div class="email-input">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Email</mat-label>
