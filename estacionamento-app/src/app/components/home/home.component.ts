@@ -38,10 +38,21 @@ export class HomeComponent implements OnInit {
     if (this.loginForm.valid) {
       this.auth.login(this.loginForm.value).subscribe(
         pessoaAutenticada => {
-          this.snackBar.open("Login concluído !", 'Login', {
+
+          if (!pessoaAutenticada.token) {
+            this.snackBar.open("Token não encontrado", '', {
+              duration: 2000,
+            })
+            return
+          }
+
+          this.auth.storeToken(pessoaAutenticada.token);
+
+          this.snackBar.open("Login concluído !", '', {
             duration: 2000,
-          })
-          this.router.navigateByUrl("/pessoas")
+          });
+
+          this.router.navigateByUrl("/pessoas");
         },
         error => {
           alert("Erro ao realizar o login " + JSON.stringify(error))
