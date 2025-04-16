@@ -19,6 +19,7 @@
             <mat-label>Senha</mat-label>
             <input matInput formControlName="senha" type="{{ !senhaVisivel ? 'password' : 'text' }}" required />
             <button
+              type="button"
               mat-icon-button
               matSuffix
               (click)="toggleVisibility('senha')"

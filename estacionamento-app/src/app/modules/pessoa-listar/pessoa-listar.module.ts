@@ -9,7 +9,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 
-
 @NgModule({
   declarations: [
     PessoaListarComponent
