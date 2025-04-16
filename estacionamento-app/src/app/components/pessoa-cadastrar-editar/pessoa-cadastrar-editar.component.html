@@ -22,6 +22,7 @@
         <mat-form-field *ngIf="!formGroup.get('idPessoa')?.value">
             <input matInput type="{{ !senhaVisivel ? 'password' : 'text' }}" placeholder="Senha" formControlName="senha" required autocomplete="off">
             <button
+              type="button"
               mat-icon-button
               matSuffix
               (click)="toggleVisibility('senha')"
@@ -34,6 +35,7 @@
         <mat-form-field *ngIf="!formGroup.get('idPessoa')?.value">
             <input matInput type="{{ !confirmarSenhaVisivel ? 'password' : 'text' }}" placeholder="Confirmar senha" formControlName="confirmarSenha" required autocomplete="off">
             <button
+              type="button"
               mat-icon-button
               matSuffix
               (click)="toggleVisibility('confirmarSenha')"
