@@ -50,6 +50,7 @@ export class HomeComponent implements OnInit {
 
           this.auth.storeToken(pessoaAutenticada.token)
           const tokenPayload = this.auth.decodedToken()
+          this.userStore.setNameIdFromStore(tokenPayload.nameid)
           this.userStore.setNameFromStore(tokenPayload.unique_name)
           this.userStore.setRoleFromStore(tokenPayload.role)
 

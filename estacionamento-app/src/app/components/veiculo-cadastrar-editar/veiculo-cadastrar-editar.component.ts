@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Veiculo } from 'src/app/models/veiculo.model';
+import { AuthService } from 'src/app/services/auth-service.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 import { VeiculoService } from 'src/app/services/veiculo-services.service';
 
 @Component({
@@ -14,10 +16,13 @@ export class VeiculoCadastrarEditarComponent implements OnInit {
 
   formGroup!: FormGroup
   veiculo!: Veiculo
+  nameId: string = ""
 
   constructor(
     private formBuilder: FormBuilder,
     private veiculoService: VeiculoService,
+    private userStore: UserStoreService,
+    private auth: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) { }
@@ -36,6 +41,17 @@ export class VeiculoCadastrarEditarComponent implements OnInit {
       nome: ["", this.veiculo ? [] : []],
       sobreNome: ["", this.veiculo ? [] : []]
     })
+
+    this.userStore.getNameIdFromStore().subscribe(
+      value => {
+        let nameIdFromToken = this.auth.getNameIdFromToken()
+        this.nameId = value || nameIdFromToken
+
+        this.formGroup.patchValue({
+          idPessoa: this.nameId
+        });
+      }
+    )
   }
 
   salvarVeiculo() {

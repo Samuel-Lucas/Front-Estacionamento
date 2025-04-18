@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Veiculo } from 'src/app/models/veiculo.model';
+import { AuthService } from 'src/app/services/auth-service.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 import { VeiculoService } from 'src/app/services/veiculo-services.service';
 
 @Component({
@@ -13,11 +14,23 @@ export class VeiculoListarComponent implements OnInit {
 
   veiculos: Observable<Veiculo[]> = new Observable<Veiculo[]>();
   colunasTabela = ['Marca', 'Modelo', 'Cor', 'Placa', 'Dono', 'Acoes']
+  nameId!: string
 
-  constructor(private veiculoService: VeiculoService) { }
+  constructor(
+    private veiculoService: VeiculoService,
+    private userStore: UserStoreService,
+    private auth: AuthService
+  ) { }
 
   ngOnInit() {
-    this.listarTodosVeiculos();
+    this.listarTodosVeiculos()
+
+    this.userStore.getNameIdFromStore().subscribe(
+      value => {
+        let nameIdFromToken = this.auth.getNameIdFromToken()
+        this.nameId = value || nameIdFromToken
+      }
+    )
   }
 
   listarTodosVeiculos() {
