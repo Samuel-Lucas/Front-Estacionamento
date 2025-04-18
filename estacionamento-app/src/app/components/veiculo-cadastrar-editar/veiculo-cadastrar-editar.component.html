@@ -7,8 +7,8 @@
           <input matInput type="hidden" placeholder="IdVeiculo" formControlName="idVeiculo" value="{{veiculo.idVeiculo}}" [attr.hidden]="true" [attr.disabled]="true" required autocomplete="off">
           <mat-error>IdVeiculo é obrigatório</mat-error>
         </mat-form-field>
-        <mat-form-field *ngIf="!formGroup.get('idVeiculo')?.value">
-          <input matInput placeholder="IdPessoa" formControlName="idPessoa" required autocomplete="off">
+        <mat-form-field *ngIf="!!nameId && !!!veiculo">
+          <input matInput type="hidden" placeholder="IdPessoa" formControlName="idPessoa" [attr.hidden]="true" [attr.disabled]="true" required autocomplete="off">
           <mat-error>IdPessoa é obrigatório</mat-error>
         </mat-form-field>
         <mat-form-field>
