@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth-service.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService,
+    private userStore: UserStoreService,
     private router: Router,
     private snackBar: MatSnackBar
   ) { }
@@ -46,13 +48,16 @@ export class HomeComponent implements OnInit {
             return
           }
 
-          this.auth.storeToken(pessoaAutenticada.token);
+          this.auth.storeToken(pessoaAutenticada.token)
+          const tokenPayload = this.auth.decodedToken()
+          this.userStore.setNameFromStore(tokenPayload.unique_name)
+          this.userStore.setRoleFromStore(tokenPayload.role)
 
           this.snackBar.open("Login concluído !", '', {
             duration: 2000,
           });
 
-          this.router.navigateByUrl("/pessoas");
+          this.router.navigateByUrl("/pessoas")
         },
         error => {
           alert("Erro ao realizar o login " + JSON.stringify(error))

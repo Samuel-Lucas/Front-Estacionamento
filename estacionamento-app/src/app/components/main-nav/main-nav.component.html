@@ -21,7 +21,8 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Estacionamento</span>
-      <button mat-raised-button color="warn" (click)="deslogar()">Sair</button>
+      <span *ngIf="usuarioAutenticado()">Olá {{ name }}</span>
+      <button *ngIf="usuarioAutenticado()" mat-raised-button color="warn" (click)="deslogar()">Sair</button>
     </mat-toolbar>
     <!-- Add Content Here -->
 

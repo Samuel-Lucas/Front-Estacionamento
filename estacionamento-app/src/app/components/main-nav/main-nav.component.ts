@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth-service.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -17,7 +18,22 @@ export class MainNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private auth: AuthService) {}
+  name: string = ""
+
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private auth: AuthService,
+    private userStore: UserStoreService
+  ) {}
+
+  ngOnInit() {
+    this.userStore.getNameFromStore().subscribe(
+      value => {
+        let nameFromToken = this.auth.getNameFromToken()
+        this.name = value || nameFromToken
+      }
+    )
+  }
 
   deslogar() {
 
@@ -28,7 +44,7 @@ export class MainNavComponent {
     this.auth.signOut()
   }
 
-  usuarioAutenticado() {
-    this.auth.IsLoggedIn()
+  usuarioAutenticado(): boolean {
+    return !!this.name
   }
 }
