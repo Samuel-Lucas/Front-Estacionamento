@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pessoa } from 'src/app/models/pessoa.model';
 import { PessoaService } from 'src/app/services/pessoa.services.service';
@@ -21,6 +22,7 @@ export class PessoaCadastrarEditarComponent implements OnInit {
     private formBuilder: FormBuilder,
     private pessoaService: PessoaService,
     private router: Router,
+    private snackBar: MatSnackBar,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -59,6 +61,9 @@ export class PessoaCadastrarEditarComponent implements OnInit {
       this.pessoaService.cadastrarPessoa(this.formGroup.value).subscribe(
         pessoaCadastrada => {
           this.router.navigateByUrl("/pessoas")
+          this.snackBar.open("Conta criada com sucesso, faça o login !", '', {
+            duration: 2000,
+          })
         },
         error => {
           alert("Erro ao realizar o cadastro " + JSON.stringify(error))
