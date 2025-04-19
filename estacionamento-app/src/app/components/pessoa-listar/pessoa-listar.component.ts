@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Pessoa } from 'src/app/models/pessoa.model';
@@ -21,6 +22,7 @@ export class PessoaListarComponent implements OnInit {
     private pessoaService: PessoaService,
     private userStore: UserStoreService,
     private auth: AuthService,
+    private snackBar: MatSnackBar,
     private router: Router
   ) { }
 
@@ -43,7 +45,10 @@ export class PessoaListarComponent implements OnInit {
     if (confirm("Deseja excluir sua conta ?")) {
       this.pessoaService.deletarPessoa(idPessoa).subscribe(
         response => {
-          this.router.navigateByUrl("")
+          this.auth.signOut()
+          this.snackBar.open("Conta excluída com sucesso", '', {
+            duration: 4000,
+          })
         },
         error => {
           alert("Erro ao excluir conta " + JSON.stringify(error))

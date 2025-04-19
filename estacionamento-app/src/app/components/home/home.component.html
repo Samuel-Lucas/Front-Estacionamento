@@ -1,6 +1,6 @@
 <mat-toolbar>Bem-vindo !</mat-toolbar>
 
-<div class="content-body">
+<div class="content-body" *ngIf="!!!nameId">
   <mat-card>
     <mat-card-content>
       <div class="header">
@@ -36,9 +36,13 @@
         <hr>
         <div>
           <p>Não tem cadastro ?</p>
-          <button mat-raised-button color="primary" routerLink="pessoas/cadastrar">Cadastrar</button>
+          <button mat-raised-button class="mat-success" routerLink="pessoas/cadastrar">Cadastrar</button>
         </div>
       </form>
     </mat-card-content>
   </mat-card>
+</div>
+
+<div class="content-body" *ngIf="!!nameId">
+  <h2>Você está autenticado !</h2>
 </div>

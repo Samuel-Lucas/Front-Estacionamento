@@ -33,3 +33,9 @@
   padding-right: 60px;
   text-decoration: none;
 }
+
+.mat-success {
+  background-color: green;
+  color: #fff;
+  margin-right: 5px;
+}

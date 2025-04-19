@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   loginForm!: FormGroup
   senhaVisivel = false
+  nameId!: string
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,6 +29,13 @@ export class HomeComponent implements OnInit {
       email: ["", Validators.required],
       senha: ["", Validators.required]
     })
+
+    this.userStore.getNameIdFromStore().subscribe(
+      value => {
+        let nameIdFromToken = this.auth.getNameIdFromToken()
+        this.nameId = value || nameIdFromToken
+      }
+    )
   }
 
   toggleVisibility(input: 'senha'): void {
