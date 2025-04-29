@@ -12,9 +12,10 @@ import { VeiculoService } from 'src/app/services/veiculo-services.service';
 })
 export class VeiculoListarComponent implements OnInit {
 
-  veiculos: Observable<Veiculo[]> = new Observable<Veiculo[]>();
+  veiculos: Observable<Veiculo[]> = new Observable<Veiculo[]>()
   colunasTabela = ['Marca', 'Modelo', 'Cor', 'Placa', 'Dono', 'Acoes']
   nameId!: string
+  vagasRestantes!: number
 
   constructor(
     private veiculoService: VeiculoService,
@@ -23,6 +24,7 @@ export class VeiculoListarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.obterVagasRestantesVeiculos()
     this.listarTodosVeiculos()
 
     this.userStore.getNameIdFromStore().subscribe(
@@ -35,6 +37,17 @@ export class VeiculoListarComponent implements OnInit {
 
   listarTodosVeiculos() {
     this.veiculos = this.veiculoService.listarVeiculos()
+  }
+
+  obterVagasRestantesVeiculos() {
+    this.veiculoService.obterQuantidadeVeiculos().subscribe(
+      response => {
+        this.vagasRestantes = 5 - response
+      },
+      error => {
+        alert("Erro ao obter quantidade de veículos" + JSON.stringify(error))
+      }
+    )
   }
 
   deletarVeiculo(idVeiculo: number) {

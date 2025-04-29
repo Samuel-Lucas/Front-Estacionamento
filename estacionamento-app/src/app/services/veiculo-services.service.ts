@@ -27,6 +27,12 @@ export class VeiculoService {
     })
   }
 
+  obterQuantidadeVeiculos(): Observable<number> {
+    return this.httpClient.get<number>(`${this.baseUrl}/${this.endpoint}/quantidade-veiculos`, {
+      headers: this.getHeaders()
+    })
+  }
+
   cadastrarVeiculo(veiculo: VeiculoInsertRequest): Observable<VeiculoInsertRequest> {
     return this.httpClient.post<VeiculoInsertRequest>(`${this.baseUrl}/${this.endpoint}`, veiculo, {
       headers: this.getHeaders()
