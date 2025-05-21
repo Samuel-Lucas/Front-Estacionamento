@@ -20,9 +20,11 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Estacionamento</span>
-      <span *ngIf="usuarioAutenticado()">Olá {{ name }}</span>
-      <button *ngIf="usuarioAutenticado()" mat-raised-button color="warn" (click)="deslogar()">Sair</button>
+      <span class="nome-estacionamento">Estacionamento EMEF Jardim Paulo IV</span>
+      <div class="section-user-actions">
+        <span *ngIf="usuarioAutenticado()">Olá {{ name }}</span>
+        <button *ngIf="usuarioAutenticado()" mat-raised-button color="warn" (click)="deslogar()">Sair</button>
+      </div>
     </mat-toolbar>
     <!-- Add Content Here -->
 
