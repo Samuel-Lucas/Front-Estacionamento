@@ -21,3 +21,19 @@
   display: flex;
   justify-content: space-between;
 }
+
+.section-user-actions {
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nome-estacionamento {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .nome-estacionamento {
+    display: none;
+  }
+}
