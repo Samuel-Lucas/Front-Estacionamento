@@ -4,16 +4,19 @@ import { Observable } from 'rxjs';
 import { Pessoa } from '../models/pessoa.model';
 import { PessoaInsertRequest } from '../models/pessoa-insert-request.model';
 import { AuthService } from './auth-service.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PessoaService {
 
-  private baseUrl = 'http://localhost:5122'
+  private baseUrl: string;
   private endpoint = 'api/Pessoa/v1'
 
-  constructor(private httpClient: HttpClient, private auth: AuthService) { }
+  constructor(private httpClient: HttpClient, private auth: AuthService) {
+    this.baseUrl = environment.baseUrl;
+  }
 
   listarPessoas(): Observable<Pessoa[]> {
     return this.httpClient.get<Pessoa[]>(`${this.baseUrl}/${this.endpoint}`, {

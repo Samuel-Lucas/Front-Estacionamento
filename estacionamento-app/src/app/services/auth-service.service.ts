@@ -4,18 +4,20 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt'
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private baseUrl = 'http://localhost:5122'
+  private baseUrl: string;
   private endpoint = 'api/Auth/v1/Authenticate'
   private userPayload: any
 
   constructor(private authService: HttpClient, private router: Router) {
     this.userPayload = this.decodedToken()
+    this.baseUrl = environment.baseUrl;
   }
 
   login(loginObj: User): Observable<User> {
