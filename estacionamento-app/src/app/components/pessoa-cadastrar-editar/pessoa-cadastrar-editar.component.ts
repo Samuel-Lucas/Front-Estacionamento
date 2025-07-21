@@ -17,6 +17,7 @@ export class PessoaCadastrarEditarComponent implements OnInit {
   senhaVisivel = false
   confirmarSenhaVisivel = false
   pessoa!: Pessoa
+  carregando = false
 
   constructor(
     private formBuilder: FormBuilder,
@@ -57,9 +58,10 @@ export class PessoaCadastrarEditarComponent implements OnInit {
       )
 
     } else {
-
+      this.carregando = true
       this.pessoaService.cadastrarPessoa(this.formGroup.value).subscribe(
         pessoaCadastrada => {
+          this.carregando = false
           this.router.navigateByUrl("/pessoas")
           this.snackBar.open("Conta criada com sucesso, faça o login !", '', {
             duration: 2000,

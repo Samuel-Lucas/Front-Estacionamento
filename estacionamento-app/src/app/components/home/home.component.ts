@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   loginForm!: FormGroup
   senhaVisivel = false
   nameId!: string
+  carregando = false
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,8 +47,11 @@ export class HomeComponent implements OnInit {
 
   signin() {
     if (this.loginForm.valid) {
+      this.carregando = true
+
       this.auth.login(this.loginForm.value).subscribe(
         pessoaAutenticada => {
+          this.carregando = false
 
           if (!pessoaAutenticada.token) {
             this.snackBar.open("Token não encontrado", '', {

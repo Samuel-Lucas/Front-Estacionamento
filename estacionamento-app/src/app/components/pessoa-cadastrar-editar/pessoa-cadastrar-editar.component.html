@@ -4,7 +4,7 @@
   <form class="form-padrao" *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && salvar()"
         novalidate>
         <mat-form-field *ngIf="formGroup.get('idPessoa')?.value" >
-          <input matInput type="hidden" placeholder="IdPessoa" formControlName="idPessoa" value="{{pessoa.idPessoa}}" [attr.hidden]="true" [attr.disabled]="true" required autocomplete="off">
+          <input matInput type="hidden" placeholder="IdPessoa" formControlName="idPessoa" [attr.hidden]="true" [attr.disabled]="true" required autocomplete="off">
           <mat-error>IdPessoa é obrigatório</mat-error>
         </mat-form-field>
         <mat-form-field>
@@ -55,4 +55,8 @@
             <button type="button" mat-raised-button routerLink="">Cancelar</button>
         </div>
     </form>
+
+  <div class="loading-overlay" *ngIf="carregando">
+    <mat-spinner></mat-spinner>
+  </div>
 </div>

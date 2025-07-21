@@ -7,6 +7,11 @@ const routes: Routes = [
     loadChildren: () => import('./modules/home/home.module').then(modulo => modulo.HomeModule)
   },
   {
+    path: 'home',
+    redirectTo: "",
+    pathMatch: 'full'
+  },
+  {
     path: "pessoas",
     loadChildren: () => import('./modules/pessoa-listar/pessoa-listar.module').then(modulo => modulo.PessoaListarModule),
     canActivate: [AuthGuard]
