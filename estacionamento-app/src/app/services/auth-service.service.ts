@@ -26,8 +26,7 @@ export class AuthService {
 
   signOut() {
     localStorage.clear()
-    this.router.navigateByUrl("")
-    window.location.reload()
+    this.router.navigateByUrl("home")
   }
 
   storeToken(tokenValue: string) {

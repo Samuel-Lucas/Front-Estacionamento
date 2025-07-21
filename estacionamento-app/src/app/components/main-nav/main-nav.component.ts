@@ -41,6 +41,10 @@ export class MainNavComponent {
       return
     }
 
+    this.userStore.setNameIdFromStore(null!);
+    this.userStore.setNameFromStore(null!);
+    this.userStore.setRoleFromStore(null!);
+
     this.auth.signOut()
   }
 
