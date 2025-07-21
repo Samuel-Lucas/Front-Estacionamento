@@ -4,16 +4,19 @@ import { Observable } from 'rxjs';
 import { Veiculo } from '../models/veiculo.model';
 import { VeiculoInsertRequest } from '../models/veiculo-insert-request.model';
 import { AuthService } from './auth-service.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VeiculoService {
 
-  private baseUrl = 'http://localhost:5122'
+  private baseUrl: string;
   private endpoint = 'api/Veiculo/v1'
 
-  constructor(private httpClient: HttpClient, private auth: AuthService) { }
+  constructor(private httpClient: HttpClient, private auth: AuthService) {
+    this.baseUrl = environment.baseUrl;
+  }
 
   listarVeiculos(): Observable<Veiculo[]> {
     return this.httpClient.get<Veiculo[]>(`${this.baseUrl}/${this.endpoint}`, {
