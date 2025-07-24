@@ -4,7 +4,7 @@
   <form class="form-padrao" *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && salvarVeiculo()"
         novalidate>
         <mat-form-field *ngIf="formGroup.get('idVeiculo')?.value" >
-          <input matInput type="hidden" placeholder="IdVeiculo" formControlName="idVeiculo" value="{{veiculo.idVeiculo}}" [attr.hidden]="true" [attr.disabled]="true" required autocomplete="off">
+          <input matInput type="hidden" formControlName="idVeiculo" value="{{veiculo.idVeiculo}}" [attr.hidden]="true" [attr.disabled]="true" required autocomplete="off">
           <mat-error>IdVeiculo é obrigatório</mat-error>
         </mat-form-field>
         <mat-form-field *ngIf="!!nameId && !!!veiculo">

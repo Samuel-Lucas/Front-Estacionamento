@@ -26,7 +26,8 @@ const routes: Routes = [
   },
   {
     path: "veiculos",
-    loadChildren: () => import('./modules/veiculo-listar/veiculo-listar.module').then(modulo => modulo.VeiculoListarModule)
+    loadChildren: () => import('./modules/veiculo-listar/veiculo-listar.module').then(modulo => modulo.VeiculoListarModule),
+    canActivate: [AuthGuard]
   },
   {
     path: "veiculos/cadastrar",

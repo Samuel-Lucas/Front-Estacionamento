@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Pessoa } from 'src/app/models/pessoa.model';
 import { AuthService } from 'src/app/services/auth-service.service';
@@ -22,8 +21,7 @@ export class PessoaListarComponent implements OnInit {
     private pessoaService: PessoaService,
     private userStore: UserStoreService,
     private auth: AuthService,
-    private snackBar: MatSnackBar,
-    private router: Router
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
