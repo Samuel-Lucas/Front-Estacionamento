@@ -26,7 +26,10 @@ export class AuthService {
 
   signOut() {
     localStorage.clear()
-    this.router.navigateByUrl("home")
+
+    setTimeout(() => {
+      this.router.navigateByUrl("home");
+    }, 3000);
   }
 
   storeToken(tokenValue: string) {

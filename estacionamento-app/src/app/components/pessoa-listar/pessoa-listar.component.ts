@@ -45,6 +45,11 @@ export class PessoaListarComponent implements OnInit {
     if (confirm("Deseja excluir sua conta ?")) {
       this.pessoaService.deletarPessoa(idPessoa).subscribe(
         response => {
+
+          this.userStore.setNameIdFromStore(null!);
+          this.userStore.setNameFromStore(null!);
+          this.userStore.setRoleFromStore(null!);
+
           this.auth.signOut()
           this.snackBar.open("Conta excluída com sucesso", '', {
             duration: 4000,
