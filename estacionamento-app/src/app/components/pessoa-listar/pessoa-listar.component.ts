@@ -52,7 +52,7 @@ export class PessoaListarComponent implements OnInit {
 
           this.auth.signOut()
           this.snackBar.open("Conta excluída com sucesso", '', {
-            duration: 3000,
+            duration: 2000,
           })
         },
         error => {

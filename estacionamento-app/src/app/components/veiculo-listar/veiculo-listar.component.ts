@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Veiculo } from 'src/app/models/veiculo.model';
 import { AuthService } from 'src/app/services/auth-service.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 import { VeiculoService } from 'src/app/services/veiculo-services.service';
-import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-veiculo-listar',
@@ -22,7 +22,7 @@ export class VeiculoListarComponent implements OnInit {
     private veiculoService: VeiculoService,
     private userStore: UserStoreService,
     private auth: AuthService,
-    private cdr: ChangeDetectorRef
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -56,7 +56,7 @@ export class VeiculoListarComponent implements OnInit {
     if (confirm("Deseja remover seu veículo ?")) {
       this.veiculoService.removerVeiculo(idVeiculo).subscribe(
         response => {
-          this.cdr.detectChanges()
+          this.router.navigateByUrl("pessoas")
         },
         error => {
           alert("Erro ao excluir veículo " + JSON.stringify(error))
