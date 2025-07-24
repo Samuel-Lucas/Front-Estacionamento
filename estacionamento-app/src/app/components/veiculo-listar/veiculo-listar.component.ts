@@ -57,7 +57,7 @@ export class VeiculoListarComponent implements OnInit {
       this.veiculoService.removerVeiculo(idVeiculo).subscribe(
         response => {
           setTimeout(() => {
-            this.router.navigateByUrl("veiculos");
+            this.listarTodosVeiculos()
           }, 3000);
         },
         error => {
