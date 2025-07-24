@@ -8,7 +8,7 @@
           <mat-error>IdVeiculo é obrigatório</mat-error>
         </mat-form-field>
         <mat-form-field *ngIf="!!nameId && !!!veiculo">
-          <input matInput type="hidden" placeholder="IdPessoa" formControlName="idPessoa" [attr.hidden]="true" [attr.disabled]="true" required autocomplete="off">
+          <input matInput type="hidden" formControlName="idPessoa" [attr.hidden]="true" [attr.disabled]="true" required autocomplete="off">
           <mat-error>IdPessoa é obrigatório</mat-error>
         </mat-form-field>
         <mat-form-field>
