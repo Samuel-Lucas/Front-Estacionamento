@@ -44,7 +44,7 @@ export class VeiculoListarComponent implements OnInit {
   obterVagasRestantesVeiculos() {
     this.veiculoService.obterQuantidadeVeiculos().subscribe(
       response => {
-        this.vagasRestantes = 5 - response
+        this.vagasRestantes = 10 - response
       },
       error => {
         alert("Erro ao obter quantidade de veículos" + JSON.stringify(error))

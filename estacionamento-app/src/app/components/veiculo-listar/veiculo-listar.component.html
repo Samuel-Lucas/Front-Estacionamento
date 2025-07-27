@@ -5,7 +5,7 @@
 </div>
 
 <div class="linha-botoes top-container-vehicle-spacing">
-  <button mat-raised-button color="primary" routerLink="cadastrar">Cadastrar veículo</button>
+  <button mat-raised-button color="primary" [disabled]="vagasRestantes == 0" routerLink="cadastrar">Cadastrar veículo</button>
 </div>
 
 <div class="componente-container">
